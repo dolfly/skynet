@@ -101,13 +101,13 @@ connection_add(struct connection_pool * pool, int fd, void *ud) {
 void 
 connection_del(struct connection_pool * pool, int fd) {
 #if HAVE_EPOLL
-	epoll_ctl(pool->epoll_fd, EPOLL_CTL_DEL, fd , NULL);
+	struct epoll_event ev;
+	epoll_ctl(pool->epoll_fd, EPOLL_CTL_DEL, fd , &ev);
 #elif HAVE_KQUEUE
 	struct kevent ke;
 	EV_SET(&ke, fd, EVFILT_READ, EV_DELETE, 0, 0, NULL);
 	kevent(pool->kqueue_fd, &ke, 1, NULL, 0, NULL);
 #endif
-	close(fd);
 }
 
 static int
