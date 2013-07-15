@@ -1,4 +1,5 @@
 See https://github.com/cloudwu/mread for detail.
+<<<<<<< HEAD
 -------------------------------------------------------------------------------
 A lightweight epoll wrap for read multi-sockets
 // create a pool , listen on port , set max connection and , buffer size (0 for default 1M bytes)
@@ -27,3 +28,7 @@ void mread_close_client(struct mread_pool *m, int id);
 
 // Get the socket fd bind with id , you can use it for sending.
 int mread_socket(struct mread_pool *m , int id);
+=======
+
+Support write buffer now.
+>>>>>>> a06846710a69513d98b72bd1ec99a9e7cfd61083
